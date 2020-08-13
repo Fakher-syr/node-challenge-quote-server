@@ -17,7 +17,23 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response) => {
+  response.json(quotes);
+});
+app.get("/10", (request, response) => {
+  response.send("You asked for route /10");
+});
 
+app.get("/random", (request, response) => {
+  response.send(pickFromArray(quotes));
+});
+app.get("/quotes/search", (req, res) => {
+  const searchWord = req.query.term;
+  const result = quotes.filter((word) =>
+    word.quotes.toLowerCase().includes(searchWord)
+  );
+  res.send(result);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
