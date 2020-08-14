@@ -30,7 +30,7 @@ app.get("/random", (request, response) => {
 app.get("/quotes/search", (req, res) => {
   const searchWord = req.query.term;
   const result = quotes.filter((word) =>
-    word.quotes.toLowerCase().includes(searchWord)
+    word.quotes.toLowerCase().includes(searchWord.toLowerCase())
   );
   res.send(result);
 });
